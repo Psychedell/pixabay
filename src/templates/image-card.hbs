@@ -1,4 +1,4 @@
-{{#each this}}
+{{!-- {{#each this}}
 <a href={{largeImageURL}} class="photo-link">
   <div class="photo-card">
   <img src={{webformatURL}} alt="" loading="lazy" />
@@ -18,5 +18,91 @@
   </div>
 </div>
 </a>
-{{/each}}
+{{/each}} --}}
 
+{{!-- POKEMON search!!!!!!!!! --}}
+
+    {{!-- <div class="card">
+      <div class="card-img-top">
+        <img src="{{sprites.front_default}}" alt="{{name}}" />
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">Имя: {{name}}</h2>
+        <p class="card-text">Вес: {{weight}}</p>
+        <p class="card-text">Рост: {{height}}</p>
+        <p class="card-text">Умения: </p>
+        <ul class="list-group">
+          {{#each abilities}}
+          <li class="list-group-item">{{ability.name}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    </div> --}}
+
+{{!-- 
+ {{#each this}}
+  <li>
+    <a href="{{url}}" target="_blank" rel="noopener noreferrer">
+      <article>
+        <img src="{{urlToImage}}" alt="" width="480">
+        <h2>{{title}}</h2>
+        <p>Posted by: {{author}}</p>
+        <p>{{description}}</p>
+      </article>
+    </a>
+  </li>
+{{/each}}    --}}
+
+{{#each this}}
+  <div class='Card' data-id='{{id}}'>
+    <div class='CardThumb'>
+      {{#if poster_path}}
+        <picture class='poster'>
+          <source
+            srcset='https://image.tmdb.org/t/p/original{{poster_path}} 1x, https://image.tmdb.org/t/p/original{{poster_path}} 2x'
+            media='(min-width: 1280px)'
+          />
+          <source
+            srcset='https://image.tmdb.org/t/p/w780{{poster_path}} 1x, https://image.tmdb.org/t/p/w780{{poster_path}} 2x'
+            media='(min-width: 768px)'
+          />
+          <source
+            srcset='https://image.tmdb.org/t/p/w342{{poster_path}} 1x, https://image.tmdb.org/t/p/w342{{poster_path}} 2x'
+            media='(min-width: 320px)'
+          />
+
+          <img
+            data-id='{{id}}'
+            src='https://image.tmdb.org/t/p/w342{{poster_path}}'
+            alt='{{title}}'
+            loading='lazy'
+            class='CardImage'
+          />
+        </picture>
+      {{else}}
+        <img
+          data-id='{{id}}'
+          src='https://cdn.pixabay.com/photo/2014/03/25/16/27/movie-297135_960_720.png'
+          alt='{{title}}'
+          loading='lazy'
+          class='CardImage'
+          style='object-fit: contain;'
+        />
+      {{/if}}
+      <div class='CardOverlay'>
+        <p class='CardText'>{{overview}}</p>
+      </div>
+    </div>
+    <h2 data-id='{{id}}' class='CardTitle'>{{title}}</h2>
+    <div class='CardCaption'>
+      <span data-id='{{id}}' class='CardInfo'>
+        {{genre_ids}}
+        |
+        {{release_date}}
+      </span>
+      <span class='CardRating'>
+        {{vote_average}}
+      </span>
+    </div>
+  </div>
+{{/each}}
